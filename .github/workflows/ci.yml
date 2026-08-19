@@ -10,5 +10,8 @@ jobs:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
+      - name: Vérifier index.html
+        run: test -f index.html
+
       - name: Afficher un message
-        run: echo "La CI fonctionne !"
+        run: echo "Tous les tests sont réussis !"
