@@ -10,8 +10,21 @@ jobs:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
-      - name: Vérifier index.html
-        run: test -f index.html
+      - name: Lint
+        run: |
+          echo "🔍 Vérification du code..."
+          test -f index.html
 
-      - name: Afficher un message
-        run: echo "Tous les tests sont réussis !"
+      - name: Test
+        run: |
+          echo "🧪 Exécution des tests..."
+          grep -q "<h1>" index.html
+
+      - name: Build
+        run: |
+          echo "📦 Construction du projet..."
+          mkdir -p build
+          cp index.html build/
+
+      - name: Vérification du build
+        run: test -f build/index.html
